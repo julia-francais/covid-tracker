@@ -2,10 +2,13 @@ import React, { Component } from "react"
 import { Link } from "gatsby"
 
 import { Cards, Chart, CountryPicker } from "../components"
-import styles from "../Index.css"
+import styles from "./Index.css"
 import { fetchData } from "../api"
 
-import Layout from "../components/layout"
+// import Layout from "../components/layout"
+import Header from "../components/header"
+import coronaImage from "../images/image.png"
+
 // import Image from "../components/image"
 import SEO from "../components/seo"
 
@@ -33,6 +36,12 @@ class IndexPage extends Component {
       // <Layout>
       <div className="container">
         <SEO title="Home" />
+        <img
+          className={styles.img}
+          src={coronaImage}
+          alt="COVID-19"
+          style={{ marginTop: "50px" }}
+        />
         <Cards data={data} />
         <CountryPicker handleCountryChange={this.handleCountryChange} />
         <Chart data={data} country={country} />

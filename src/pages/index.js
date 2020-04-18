@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { Link } from "gatsby"
 
 import { Cards, Chart, CountryPicker } from "../components"
-import styles from "../App.module.css"
+import styles from "../Index.css"
 import { fetchData } from "../api"
 
 import Layout from "../components/layout"
@@ -12,6 +12,7 @@ import SEO from "../components/seo"
 class IndexPage extends Component {
   state = {
     data: {},
+    country: "",
   }
 
   async componentDidMount() {
@@ -19,15 +20,22 @@ class IndexPage extends Component {
 
     this.setState({ data: fetchedData })
   }
+
+  handleCountryChange = async country => {
+    const fetchedData = await fetchData(country)
+
+    this.setState({ data: fetchedData, country: country })
+  }
+
   render() {
-    const { data } = this.state
+    const { data, country } = this.state
     return (
       // <Layout>
       <div className="container">
         <SEO title="Home" />
         <Cards data={data} />
-        <CountryPicker />
-        <Chart />
+        <CountryPicker handleCountryChange={this.handleCountryChange} />
+        <Chart data={data} country={country} />
       </div>
       // </Layout>
     )

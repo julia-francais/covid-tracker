@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import { Link } from "gatsby"
 
 import { Cards, Chart, CountryPicker } from "../components"
 import styles from "../styles/Index.css"
@@ -7,7 +6,6 @@ import { fetchData } from "../api"
 
 import { ThemeProvider } from "@material-ui/styles"
 
-import Header from "../components/header"
 import coronaImage from "../images/image.png"
 
 import SEO from "../components/seo"
